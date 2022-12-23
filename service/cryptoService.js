@@ -15,7 +15,7 @@ const formatMarketData = (data) => {
     let formattedData = [];
 
     data.forEach(item => {
-        const formatSparkline = formatSparkLine(data.sparkline_in_7d.price)
+        const formatSparkline = formatSparkLine(item.sparkline_in_7d.price)
 
         const formattedItem = {
             ...item,
