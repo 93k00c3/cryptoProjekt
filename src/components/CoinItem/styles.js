@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     title: {
         color: "white",
@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
       coinContainer: {
         flexDirection: 'row',
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: 'grey',
+        borderBottomColor: 'dark-grey',
         padding:15,
-        justifyContent: right
+        justifyContent: 'right'
       },
       rank: {
         fontWeight: 'bold',
@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
         marginRight: 5,
         },
       rankContainer: {
-        paddingHorizontal: 2,
-        borderRadius: 2,
+        paddingHorizontal: 5,
+        borderRadius: 5,
+        height: 20,
         marginRight: 2,
         backgroundColor: '#585858',
       },
