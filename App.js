@@ -1,52 +1,56 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, SafeAreaView } from 'react-native';
 import CoinItem from './src/components/CoinItem';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { getMarketData } from './service/cryptoService';
 import Chart from './src/components/Chart';
 
+
 const ListHeader = () => (
   <>
-    <View style>
-      <Text>Markets</Text>
-    </View>
+    <View style={styles.titleWrapper}>
+        <Text style={styles.largeTitle}>Markets</Text>
+      </View>
   </>
 )
 
 export default function App() {
 const [data, setData] = useState([]);
-const [selectedCoinData, setSelectedCoinData] = useState(null);
-  useEffect(() => {
+   useEffect(() => {
     const fetchMarketData = async() => {
       const marketData = await getMarketData();
       setData(marketData);
     }
     fetchMarketData();
   }, [])
+
+  const openModal = (item) => {
+    setSelectedCoinData(item);
+    BottomSheetModalRef.current?.present();
+  }
   return (
-    <View style={styles.container}>
+  <BottomSheetModalProvider>
+    <SafeAreaView>
       <FlatList 
-      keyExtractor={(item) => item.id}
-      data={data}
-      renderItem={({ item }) => (
-        <ListItem
-        name={item.name}
-        symbol={item.symbol}
-        currentPrice={item.currentPrice}
-        priceChangePercentage7d={item.priceChangePercentage7d}
-        logoUrl={item.image}
-        onPress={() => openModal(item)}
-        />
+        keyExtractor={(item) => item.id}
+        data={data}
+        renderItem={({ item }) => (
+          <CoinItem style={styles.container}
+          rank={item.market_cap_rank}
+          name={item.name}
+          symbol={item.symbol}
+          currentPrice={item.current_price}
+          priceChangePercentage7d={item.price_change_percentage_7d_in_currency}
+          logoUrl={item.image}
+          />
       )}
       ListHeaderComponent={<ListHeader />}/>
       <StatusBar style="light" />
-    </View>
-  );
-}
-const openModal = (item) => {
-    setSelectedCoinData(item);
-    bottomSheetModalRef.current.present();
+    </SafeAreaView>
+
+    </BottomSheetModalProvider>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -54,5 +58,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#121212',
     paddingTop: 50
+  },
+  titleWrapper: {
+    marginTop: 20,
+    paddingHorizontal: 16,
+  },
+  largeTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
   },
 });
