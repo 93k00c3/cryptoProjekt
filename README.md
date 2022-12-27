@@ -1,4 +1,5 @@
-# cryptoProjekt !(https://cryptologos.cc/logos/bitcoin-btc-logo.svg)
+# cryptoProjekt 
+
 Projekt aplikacji śledzącej rynek kryptowalut.
 Aplikacja ma na celu wyświetlanie i odświeżanie bieżących cen rynkowych najpopularniejszych coinów.
 ## Technologie
