@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const formatSparkline = (numbers) => {
-    const sevenDaysAgo: Date = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
     let formattedSparkline = numbers.map((item, index) => {
         return {
             x: sevenDaysAgo + (index + 1) * 3600,

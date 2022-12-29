@@ -1,24 +1,29 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import styles from './styles';
 
 
 const CoinItem = ({ rank, name, symbol, currentPrice, priceChangePercentage7d, logoUrl, onPress}) => {
     const priceColorChange = priceChangePercentage7d > 0 ? '#34C759' : '#FF3B30'
+    
     return (
+        <TouchableOpacity onPress={onPress}>
         <View>
         <View style={styles.coinContainer}>
                 <Image source={{uri: logoUrl}} 
                     style={{width:30, height:30, marginRight: 10}}
                     />
                 
-                <Text style={styles.title}> {symbol.toUpperCase} </Text>
                 <View style={styles.rankContainer}>
                 <Text style={styles.rank}> { rank } </Text>
 
                 </View>
+                <View style={{alignItems: 'flex-start'}}>
                 <Text style={styles.title}> { name } </Text>
+                <Text style={styles.title}> { symbol.toUpperCase()}</Text>
+                
+                </View>
                 <AntDesign 
                 name="caretdown" 
                 size={12} 
@@ -28,12 +33,14 @@ const CoinItem = ({ rank, name, symbol, currentPrice, priceChangePercentage7d, l
             
             <View style={{marginLeft: 'auto', alignItems: 'flex-end',}}>
                 <Text style={styles.text}> { currentPrice.toLocaleString('en-US', { currency: 'USD'}) } $ </Text>
-                <Text style={[styles.subtitle, {color: priceColorChange, marginLeft:0}, ]}> { priceChangePercentage7d.toFixed(2) } % </Text>
+                <Text style={[styles.subtitle, {color: priceColorChange}, ]}> { priceChangePercentage7d.toFixed(2) } % </Text>
 
             </View>
             
         </View>
         </View>
+        </TouchableOpacity>
         )
+        
 }
 export default CoinItem;

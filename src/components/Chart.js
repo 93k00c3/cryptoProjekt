@@ -31,18 +31,7 @@ const Chart = ({ currentPrice, logoUrl, name, symbol, priceChangePercentage7d, s
     const formattedValue =`$${parseFloat(value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
     return formattedValue;
   };
-
-//   const formatPLN = value => {
-//     'worklet';
-//     if (value === '') {
-//       const formattedValue = `$${latestCurrentPrice.value.toLocaleString('en-US', { currency: 'USD' })}`
-//       return formattedValue;
-//     }
-
-//     const formattedValue =`$${parseFloat(value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
-//     return formattedValue;
-//   };
-
+  
   if (sparkline.length === 0) {
     return <Text>Loading...</Text>
   }

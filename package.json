@@ -11,13 +11,14 @@
   "dependencies": {
     "@expo/webpack-config": "^0.17.3",
     "@gorhom/bottom-sheet": "^4.4.5",
-    "@rainbow-me/animated-charts": "^1.0.0-alpha.6",
+    "@rainbow-me/animated-charts": "^1.0.0-alpha.5",
     "axios": "^1.2.1",
     "expo": "^47.0.8",
     "expo-status-bar": "~1.4.2",
+    "moment": "^2.29.4",
     "react": "18.1.0",
     "react-native": "0.70.5",
-    "react-native-reanimated": "~2.12.0",
+    "react-native-reanimated": "^2.13.0",
     "react-native-web": "~0.18.7"
   },
   "devDependencies": {
