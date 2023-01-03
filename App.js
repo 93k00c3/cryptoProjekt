@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, FlatList, SafeAreaView } from 'react-native';
 import CoinItem from './src/components/CoinItem';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { getMarketData } from './service/cryptoService';
@@ -41,6 +42,7 @@ const [selectedCoinData, setSelectedCoinData] = useState(null);
   }
 
   return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
   <BottomSheetModalProvider>
     <SafeAreaView>
       <FlatList 
@@ -78,7 +80,9 @@ const [selectedCoinData, setSelectedCoinData] = useState(null);
       ) : null }
       </BottomSheetModal>
     </BottomSheetModalProvider>
+    </GestureHandlerRootView>
     );
+    
 }
 
 const styles = StyleSheet.create({
