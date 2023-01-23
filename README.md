@@ -5,4 +5,4 @@ Aplikacja ma na celu wyświetlanie i odświeżanie bieżących cen rynkowych naj
 ## Technologie
 Do stworzenia aplikacji wykorzystano technologie Node.js, React Native, Expo.
 
-### Autorzy aplikacji: Paweł Kolasa & Stanisław Karwala
+<b>WIP</b>
