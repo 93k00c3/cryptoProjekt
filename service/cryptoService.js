@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const formatSparkline = (numbers) => {
     const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
     let formattedSparkline = numbers.map((item, index) => {
@@ -9,6 +10,14 @@ const formatSparkline = (numbers) => {
         }
     })
     return formattedSparkline;
+}
+
+const formatNumber = value => {
+  if (value >= 1) {
+    return value.toFixed(3).replace(/0+$/g, '').replace(/\.$/g, '');
+  } else {
+    return value.toFixed(8).replace(/0+$/g, '').replace(/\.$/g, '');
+  }
 }
 
 const formatMarketData = (data) => {
@@ -40,3 +49,4 @@ export const getMarketData = async () => {
     console.log(error.message);
   }
 }
+export { formatNumber };

@@ -8,7 +8,7 @@ const { width: SIZE } = Dimensions.get('window');
 
 const Chart = ({ currentPrice, logoUrl, name, symbol, priceChangePercentage7d, sparkline }) => {
   const latestCurrentPrice = useSharedValue(currentPrice);
-  const [chartReady, setChartReady] = useState(false);
+  const [chartReady, setChartReady] = useState(true);
 
   const priceChangeColor = priceChangePercentage7d > 0 ? '#34C759' : '#FF3B30';
 
@@ -17,7 +17,7 @@ const Chart = ({ currentPrice, logoUrl, name, symbol, priceChangePercentage7d, s
 
     setTimeout(() => {
       setChartReady(true);
-    }, 0)
+    }, 500)
 
   }, [currentPrice])
 
@@ -28,7 +28,7 @@ const Chart = ({ currentPrice, logoUrl, name, symbol, priceChangePercentage7d, s
       return formattedValue;
     }
 
-    const formattedValue =`$${parseFloat(value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
+    const formattedValue =`$${parseFloat(value).toFixed(7).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
     return formattedValue;
   };
   

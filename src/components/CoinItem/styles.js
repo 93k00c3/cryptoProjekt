@@ -10,9 +10,8 @@ const styles = StyleSheet.create({
         marginRight: 5,
       },
       coinContainer: {
-        backgroundColor: '#3333',
+        backgroundColor: 'white',
         flexDirection: 'row',
-        borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: 'dark-grey',
         padding:15,
         justifyContent: 'right'
@@ -31,5 +30,12 @@ const styles = StyleSheet.create({
         marginTop: 5,
         backgroundColor: '#585858',
       },
+      chartWrapper: {
+        marginVertical: 16
+      },
+      chartLineWrapper: {
+        marginTop: 40,
+      },
+      
 });
 export default styles;
