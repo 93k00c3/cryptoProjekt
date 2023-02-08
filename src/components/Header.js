@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import React from "react";
+import { View, TouchableOpacity, Text } from "react-native";
 
 const Header = ({ navigateToHome, navigateToProfile }) => {
   return (
@@ -17,21 +17,21 @@ const Header = ({ navigateToHome, navigateToProfile }) => {
 
 const styles = {
   headerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'black',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "black",
     paddingHorizontal: 20,
     height: 50
   },
   headerButton: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 10,
     borderRadius: 5
   },
   headerButtonText: {
-    color: 'black',
-    fontWeight: 'bold'
+    color: "black",
+    fontWeight: "bold"
   }
 };
 

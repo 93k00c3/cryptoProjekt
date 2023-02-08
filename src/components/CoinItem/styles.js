@@ -1,26 +1,26 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     title: {
         color: "black",
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: "bold",
       },
       text: {
         color: "black",
         marginRight: 5,
       },
       coinContainer: {
-        backgroundColor: 'white',
-        flexDirection: 'row',
-        borderBottomColor: 'dark-grey',
+        backgroundColor: "white",
+        flexDirection: "row",
+        borderBottomColor: "dark-grey",
+        justifyContent: "flex-end",
         padding:15,
-        justifyContent: 'right'
       },
       rank: {
-        fontWeight: 'bold',
-        color: 'white',
+        fontWeight: "bold",
+        color: "white",
         marginRight: 5,
-        textAlign: 'center'
+        textAlign: "center"
         },
       rankContainer: {
         paddingHorizontal: 1,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         height: 20,
         marginRight: 2,
         marginTop: 5,
-        backgroundColor: '#585858',
+        backgroundColor: "#585858",
       },
       chartWrapper: {
         marginVertical: 16

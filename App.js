@@ -1,11 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, FlatList, SafeAreaView, TouchableOpacity, RefreshControl, Vibration} from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, Image, FlatList, SafeAreaView, TouchableOpacity, RefreshControl, Vibration} from "react-native";
 import CoinItem from './src/components/CoinItem';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import React, { useEffect, useState, useRef, useMemo } from 'react';
-import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { getMarketData, formatNumber } from './service/cryptoService';
-import Chart from './src/components/Chart';
+import React, { useEffect, useState, useRef, useMemo } from "react";
+import { BottomSheetModal, BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { getMarketData, formatNumber } from "./service/cryptoService";
+import Chart from "./src/components/Chart";
+import Nav from "./src/components/Profile";
 
 
 const ListHeader = () => (
@@ -19,11 +20,14 @@ const ListHeader = () => (
 ) 
 
 
+
 export default function App() {
 
 const [data, setData] = useState([]);
 const [selectedCoinData, setSelectedCoinData] = useState(null);
 const [refreshing, setRefreshing] = useState(false);
+const [showProfile, setShowProfile] = useState(true);
+
 
    useEffect(() => {
     const fetchMarketData = async() => {
@@ -38,7 +42,19 @@ const [refreshing, setRefreshing] = useState(false);
 
   const bottomSheetModalRef = useRef(null);
   
-  const snapPoints = useMemo(() => ['50%'], []);
+  const snapPoints = useMemo(() => ["50%"], []);
+
+  const ProfileScreen = () => {
+    return (
+      <View>
+        <Text>This is the profile screen</Text>
+      </View>
+    );
+    }
+  
+  const handleProfilePress = () => {
+      setShowProfile(true);
+  }
 
   const openModal = (item) => {
     setSelectedCoinData(item);
@@ -49,6 +65,7 @@ const [refreshing, setRefreshing] = useState(false);
   return (
     <GestureHandlerRootView style={{ flex: 1, }}>      
     <BottomSheetModalProvider >
+      
       
       <SafeAreaView >
         <FlatList 
@@ -79,7 +96,18 @@ const [refreshing, setRefreshing] = useState(false);
         
         />
       </SafeAreaView>
-     
+      {showProfile ? <ProfileScreen /> : null }
+        <View style={styles.bottomButtonsContainer}>
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={handleProfilePress}
+        >
+          <Text style={styles.buttonText}>Profile</Text>
+        </TouchableOpacity>
+        </View>
 
       <BottomSheetModal
         ref={bottomSheetModalRef}
@@ -99,14 +127,7 @@ const [refreshing, setRefreshing] = useState(false);
         ) : null }
         
         </BottomSheetModal>
-        <View style={styles.bottomButtonsContainer}>
-          <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>Home</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>Profile</Text>
-          </TouchableOpacity>
-        </View>
+        
         </BottomSheetModalProvider>
     </GestureHandlerRootView>
     );    
@@ -114,11 +135,11 @@ const [refreshing, setRefreshing] = useState(false);
 
 const styles = StyleSheet.create({
   SafeAreaView: {
-    backgroundColor: 'black',
+    backgroundColor: "black",
   },
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     paddingTop: 50
   },
   titleWrapper: {
@@ -147,28 +168,28 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   bottomButtonsContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
     height: 50,
-    flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
     borderTopWidth: 1,
-    borderTopColor: '#D8D8D8',
-    justifyContent: 'space-between',
+    borderTopColor: "#D8D8D8",
+    justifyContent: "space-between",
     paddingHorizontal: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonContainer: {
     height: 50,
-    width: '50%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "50%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonText: {
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   
 });

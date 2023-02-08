@@ -1,8 +1,8 @@
 import Header from './Header';
 
-const Bottom = ({ navigation }) => {
+const Nav = ({ navigation }) => {
   const navigateToHome = () => {
-    // Navigate to the home screen
+    navigation.navigate('App');
   };
 
   const navigateToProfile = () => {

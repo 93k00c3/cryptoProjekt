@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 
 const formatSparkline = (numbers) => {
@@ -14,9 +14,9 @@ const formatSparkline = (numbers) => {
 
 const formatNumber = value => {
   if (value >= 1) {
-    return value.toFixed(3).replace(/0+$/g, '').replace(/\.$/g, '');
+    return value.toFixed(3).replace(/0+$/g, "").replace(/\.$/g, "");
   } else {
-    return value.toFixed(8).replace(/0+$/g, '').replace(/\.$/g, '');
+    return value.toFixed(8).replace(/0+$/g, "").replace(/\.$/g, "");
   }
 }
 
